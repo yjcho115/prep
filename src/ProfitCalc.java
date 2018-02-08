@@ -1,10 +1,6 @@
 
 import java.security.InvalidParameterException;
-import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
-
-import java.util.Queue;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -53,12 +49,6 @@ public class ProfitCalc {
         sales.offer(new Sale(2, 20));
         sales.offer(new Sale(2, 18));
         sales.offer(new Sale(2, 20));
-
-//    purchases.offer(new Purchase(1, 10));
-//   purchases.offer(new Purchase(1, 5));
-    
-//    sales.offer(new Sale(2, 20));
-    
 
         ProfitCalc p = new ProfitCalc();
         System.out.println(p.calculateProfit(purchases, sales));

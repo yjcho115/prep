@@ -9,16 +9,10 @@
  * @author youngjucho
  */
 public class TaxBracket {
-
-    private double rate;
+    
     private double limit;
-    private double tax;
-
-    public TaxBracket(double rate, double limit, double tax) {
-        this.rate = rate;
-        this.limit = limit;
-        this.tax = tax;
-    }
+    private double rate;
+    
 
     public void setRate(double rate) {
         this.rate = rate;
@@ -26,10 +20,6 @@ public class TaxBracket {
 
     public void setLimit(double limit) {
         this.limit = limit;
-    }
-
-    public void setTax(double tax) {
-        this.tax = tax;
     }
 
     public double getRate() {
@@ -40,41 +30,16 @@ public class TaxBracket {
         return limit;
     }
 
-    public double getTax() {
-        return tax;
+    public TaxBracket(double limit, double rate) {
+        this.limit = limit;
+        this.rate = rate;
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.rate) ^ (Double.doubleToLongBits(this.rate) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.limit) ^ (Double.doubleToLongBits(this.limit) >>> 32));
-        hash = 89 * hash + (int) (Double.doubleToLongBits(this.tax) ^ (Double.doubleToLongBits(this.tax) >>> 32));
-        return hash;
+    public String toString() {
+        return "TaxBracket{" + "limit=" + limit + ", rate=" + rate + '}';
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final TaxBracket other = (TaxBracket) obj;
-        if (Double.doubleToLongBits(this.rate) != Double.doubleToLongBits(other.rate)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.limit) != Double.doubleToLongBits(other.limit)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.tax) != Double.doubleToLongBits(other.tax)) {
-            return false;
-        }
-        return true;
-    }
+    
+    
 
 }
