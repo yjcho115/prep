@@ -22,7 +22,7 @@ public class WordSearch {
         }
         return false;
     }
-    
+   
     public boolean search (char[][] board, String word, int i, int j, int index) {
         if (index == word.length()) 
             return true;
