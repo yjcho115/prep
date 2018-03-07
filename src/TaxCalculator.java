@@ -31,10 +31,7 @@ public class TaxCalculator {
     public double getTax(double remainingAmount, double tax) {
         for (TaxBracket taxBracket : taxBrackets) {
             if (remainingAmount > taxBracket.getLimit()) {
-                double taxableAmount = remainingAmount - taxBracket.getLimit();
-                double currentTax = taxableAmount * taxBracket.getRate();
-                double accumulatedTax = tax + currentTax;
-                return getTax(taxBracket.getLimit(), accumulatedTax);
+                return getTax(taxBracket.getLimit(), tax + (remainingAmount - taxBracket.getLimit()) * taxBracket.getRate());
             }
         }
         return remainingAmount * lowestTaxBracket + tax;

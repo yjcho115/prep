@@ -12,25 +12,25 @@ import java.util.List;
  * @author youngjucho
  */
 public class TaxCalc {
-
+    
     private List<TaxBracket> taxBrackets;
     private double lowestTaxBracket;
-
-    public TaxCalc(List<TaxBracket> taxBrackets, double lowestTaxBracket) {
-        taxBrackets.sort((TaxBracket t1, TaxBracket t2) -> Double.compare(t2.getLimit(), t2.getLimit()));
+    
+    public TaxCalc (List<TaxBracket> taxBrackets, double lowestTaxBracket) {
+        taxBrackets.sort((TaxBracket t1, TaxBracket t2)-> Double.compare(t2.getLimit(), t1.getLimit()));
         this.taxBrackets = taxBrackets;
         this.lowestTaxBracket = lowestTaxBracket;
     }
     
-    public double getTax(double income ) {
+    public double getTax(double income) {
         return getTax(income, 0);
     }
     
     public double getTax(double remainingAmount, double tax) {
         for (TaxBracket taxBracket : taxBrackets) {
-            if (taxBracket.getLimit() < remainingAmount) {
+            if (remainingAmount > taxBracket.getLimit()) {
                 return getTax(taxBracket.getLimit(), tax + (remainingAmount - taxBracket.getLimit()) * taxBracket.getRate());
-            }
+            } 
         }
         return remainingAmount * lowestTaxBracket + tax;
     }
